@@ -1,0 +1,21 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+<mat-toolbar-row>
+
+          <span class="titulo">elGuardian</span>
+
+          <button  mat-button [matMenuTriggerFor]="menu" class="Gmenu">Menu</button>
+
+
+        <mat-menu #menu="matMenu" yPosition="below">
+          <button mat-menu-item>Mascotas</button>
+          <button mat-menu-item>Iniciar</button>
+        </mat-menu>
+
+</mat-toolbar-row>
+    </mat-toolbar>
+    </mat-sidenav-content>
+</mat-sidenav-container>
