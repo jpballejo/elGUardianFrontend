@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
+import {  BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-carrucel',
@@ -17,6 +15,7 @@ export class CarrucelComponent {
   { 'image': '../../../assets/resources/img4.jpg' },
   { 'image': '../../../assets/resources/img1.jpg' }];
 
+slides2=["'<button>prueba</button>'","'<button>prueba</button>'"]
 
 
   constructor(private breakpointObserver: BreakpointObserver) { }

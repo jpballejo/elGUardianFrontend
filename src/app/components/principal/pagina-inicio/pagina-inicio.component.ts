@@ -1,13 +1,8 @@
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 import { Component, OnInit } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
-import { CarrucelComponent } from "../carrucel/carrucel.component";
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-pagina-inicio',
   templateUrl: './pagina-inicio.component.html',
@@ -15,9 +10,10 @@ export interface Tile {
 })
 export class PaginaInicioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+      this.router.navigate(['/inicio/landing']);
   }
 
 }

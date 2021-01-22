@@ -1,13 +1,9 @@
 import { Component,OnInit } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list'
+import { Router } from '@angular/router';
+import { User } from '../../../shared/models/user.interface';
+import { AuthService } from '../../auth/services/auth.service';
+
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -15,13 +11,20 @@ import { MatListModule } from '@angular/material/list'
 })
 export class NavBarComponent implements OnInit{
 
-/*isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );*/
+public user$: Observable<User> = this.authSvc.afAuth.user;
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(public authSvc: AuthService, private router: Router) {}
   ngOnInit(): void {
+
   }
+
+  async onLogout() {
+  try {
+    await this.authSvc.logout();
+    console.log('logout');
+    this.router.navigate(['/login']);
+  } catch (error) {
+    console.log(error);
+  }
+}
 }

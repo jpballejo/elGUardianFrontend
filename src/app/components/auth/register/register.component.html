@@ -1,0 +1,82 @@
+<!--<div class="row">
+  <div class="col-md-6 mx-auto mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="text-center">REGISTER</h1>
+        <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" formControlName="email" />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="password"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">
+            Register
+          </button>
+        </form>
+        <div class="form-group mt-3">
+          <p>Do you have an account?<a [routerLink]="['/auth/login']"> Login </a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<div fxLayout="row" fxLayoutAlign="space-around center" class="contenedor-principal">
+  <div fxLayout="column" fxLayoutAlign="space-around center" class="contenedor-secundario">
+    <mat-card class="example-card">
+      <!--======================HEADER======================-->
+
+      <mat-card-header class="cabecera-card">
+      <div class="titulo">
+          <mat-card-title id='titulo'>Registrarse</mat-card-title>
+      </div>
+      </mat-card-header>
+      <!--======================CONTENIDO======================-->
+
+      <mat-card-content>
+        <!--======================Formulario======================-->
+        <form [formGroup]="registerForm">
+          <div class="inputs" fxLayout="column" fxLayoutAlign="space-around center">
+            <mat-form-field appearance="outline">
+              <!--EMAIL------------------------------->
+              <mat-label>Email</mat-label>
+              <input type="email" matInput class="form-control" formControlName="email" placeholder="Ex. pat@example.com">
+              <mat-error *ngIf="registerForm.hasError('email') && !registerForm.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="registerForm.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+              <!--EMAIL------------------------------->
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+              <!--PSW------------------------------->
+              <mat-label>Password</mat-label>
+              <input type="password" matInput class="form-control" formControlName="password" placeholder="Ex. Escribe tu password..." required>
+              <!--PSW------------------------------->
+            </mat-form-field>
+          </div>
+          <!--BTN------------------------------->
+
+            <div class="btn">
+              <button mat-raised-button id="btnr" color="primary" (click)="onRegister()">Register</button>
+              <button mat-raised-button id="btnc" (click)="cancelar()">Cancelar</button>
+            </div>
+
+          <!--BTN------------------------------->
+        </form>
+        <!--======================Formulario======================-->
+        <div class="existe">
+          <p>Do you have an account?<a [routerLink]="['/auth/login']"> Login </a></p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

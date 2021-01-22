@@ -1,0 +1,72 @@
+<!--<div class="card" *ngIf="user$ | async as user;else loading">
+
+    <h3 class="text-center">Thank you for Registering!</h3>
+    <div class="form-group">
+      <p class="text-center">
+        We have sent a confirmation email to <strong>{{ user?.email }}</strong>
+      </p>
+      <p class="text-center">
+        Please check your email and click on the link to verify your email
+        address.
+      </p>
+    </div>
+    <form class="" action="index.html">
+      <div class="form-group text-center ">
+        <button class="btn btn-primary" (click)="onSendEmail()">
+          Resend verification email
+        </button>
+      </div>
+    </form>
+
+
+</div>
+*ngIf="user$ | async as user;else loading"
+
+
+<ng-template #loading>
+  Loading....
+</ng-template>-->
+
+<div fxLayout="row" fxLayoutAlign="space-around center" class="contenedorPrincipal" *ngIf="user$ | async as user;else loading">
+  <div fxLayout="column" fxLayoutAlign="space-around center">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title class="titulo">
+          <h1>Verificar Cuenta</h1>
+        </mat-card-title>
+        <div mat-card-avatar class="example-header-image"></div>
+
+      </mat-card-header>
+      <mat-card-content>
+        <mat-card-subtitle class="subtitulo">Gracias por registrarse!</mat-card-subtitle>
+        <p class="text-center">
+          Hemos enviado un correo electrónico de confirmación a <strong>{{ user?.email }}</strong>
+        </p>
+        <p class="text-center">
+          Por favor revise su correo electrónico y haga clic en el enlace para verificar su correo electrónico.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="contenedorbtn">
+          <button mat-button (click)="onSendEmail()">Renviar Email de verificacion</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+
+<ng-template #loading>
+<div class="contenedorPrincipal">
+
+
+  <mat-card>
+
+    <mat-card-content>
+      <mat-progress-spinner class="example-margin" [color]="color" [mode]="mode">
+      </mat-progress-spinner>
+    </mat-card-content>
+  </mat-card>
+
+  </div>
+</ng-template>

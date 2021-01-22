@@ -3,19 +3,24 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-<mat-toolbar-row>
-
-          <span class="titulo">elGuardian</span>
-
-          <button  mat-button [matMenuTriggerFor]="menu" class="Gmenu">Menu</button>
-
-
-        <mat-menu #menu="matMenu" yPosition="below">
-          <button mat-menu-item>Mascotas</button>
-          <button mat-menu-item>Iniciar</button>
-        </mat-menu>
-
-</mat-toolbar-row>
+      <mat-toolbar-row>
+        <span class="titulo" [routerLink]="['/inicio']">elGuardian</span>
+        <div *ngIf="user$ | async as user;else login">
+          <button mat-button [matMenuTriggerFor]="menu" class="Gmenu">Menu</button>
+          <mat-menu #menu="matMenu" yPosition="below">
+            <button mat-menu-item [routerLink]="['/inicio/usuario']">Perfil</button>
+            <button mat-menu-item [routerLink]="['/inicio/usuario/crud']">Usuarios</button>
+            <button mat-menu-item>Mascotas</button>
+            <button mat-menu-item (click)="onLogout()">Logout</button>
+          </mat-menu>
+        </div>
+        <ng-template #login>
+          <button mat-button [matMenuTriggerFor]="menu2" class="Gmenu">Menu</button>
+          <mat-menu #menu2="matMenu" yPosition="below">
+            <button mat-menu-item [routerLink]="['/auth']">Iniciar Sesion</button>
+          </mat-menu>
+        </ng-template>
+      </mat-toolbar-row>
     </mat-toolbar>
-    </mat-sidenav-content>
+  </mat-sidenav-content>
 </mat-sidenav-container>

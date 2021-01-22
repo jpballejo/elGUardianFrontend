@@ -1,0 +1,14 @@
+.contenedor-principal{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+
+}
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}

@@ -1,0 +1,34 @@
+.example-card {
+  max-width: auto;
+  align-items: center;
+}
+
+.contenedor-principal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+}
+
+.inputs {
+  display: grid;
+}
+
+.btn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding-top: inherit;
+  padding-bottom: 20px;
+}
+#btnr{
+  margin-left: 5%;
+}
+#btnc{
+  margin-left: 5%;
+}
+.titulo{
+  margin-left:15%;
+}

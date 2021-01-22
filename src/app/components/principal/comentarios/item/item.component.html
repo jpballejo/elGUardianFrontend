@@ -1,0 +1,29 @@
+<section class="carousel-wrapper" [ngStyle]="carouselWrapperStyle">
+  <ul class="carousel-inner" #carousel>
+    <li *ngFor="let item of items;" class="carousel-item">
+      <ng-container [ngTemplateOutlet]="item.tpl"></ng-container>
+      <div class="item">
+        <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{items.title}}</mat-card-title>
+
+        </mat-card-header>
+        <img mat-card-image src={{items.imagen}} >
+        <mat-card-content>
+          <p>
+          {{items.contenido}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>VER MAS!</button>
+        </mat-card-actions>
+        </mat-card>
+      </div>
+    </li>
+  </ul>
+</section>
+<div *ngIf="showControls" style="margin-top: 1em">
+  <button (click)="next()" class="btn btn-default">next</button>
+  <button (click)="prev()" class="btn btn-default">Prev</button>
+</div>

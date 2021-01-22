@@ -1,0 +1,79 @@
+<div class="contenedor-principal">
+  <div class="perfil-usuario">
+    <mat-card class="mat-elevation-z8">
+      <mat-card-content>
+        <div class="form-usuario">
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td class="imagentd">
+
+                <div class="imagen-perfil">
+                  <img class="imagen" src="../../../assets/resources/perfil.png" alt="">
+                </div>
+              </td>
+            </tr>
+          </table>
+          <form class="" [formGroup]="perfilForm">
+
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Nombre</mat-label>
+                    <input type="text" matInput formControlName="nombre">
+                  </mat-form-field>
+
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="email" placeholder="Email">
+                  </mat-form-field>
+
+
+                <mat-form-field class="example-full-width">
+                  <mat-label>Telefono</mat-label>
+                  <span matPrefix>+598 &nbsp;</span>
+                  <input type="tel" matInput placeholder="+598-99005522">
+                  <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+
+            <p>
+              <mat-form-field class="example-full-width">
+                <mat-label>Direccion</mat-label>
+                <textarea matInput placeholder="Ej. 18 de Julio"></textarea>
+              </mat-form-field>
+            </p>
+
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Departamento</mat-label>
+                    <input matInput placeholder="Ex. San Francisco">
+                  </mat-form-field>
+
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Ciudad</mat-label>
+                    <input matInput placeholder="Ex. California">
+                  </mat-form-field>
+
+
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Codigo Postal</mat-label>
+                    <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
+                    <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                  </mat-form-field>
+
+          </form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+<!--   uid: string;
+  email: string;
+  displayName?: string;
+  emailVerified: boolean;
+  password?: string;
+  photoURL?: string;
+  role?: Roles;-->
