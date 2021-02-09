@@ -5,7 +5,7 @@ import firebase from 'firebase/app';
 import { Observable, of, BehaviorSubject, ReplaySubject } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { HttpHeaders, HttpRequest, HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { RoleValidator } from '../../auth/helpers/roleValidator';
 import { environment } from '../../../../environments/environment';
 import { JwtResponseI } from "../../../shared/models/jwt-response";
@@ -13,7 +13,7 @@ import { throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 
-export class AuthService extends RoleValidator {
+  export class AuthService extends RoleValidator {
   public user$: Observable<User>;//Observable para determinar el estado del usuario en la sesion
   apiURL: string = `${environment.apiURL}`;//variable con la ruta http sacada de enviroment
   authSubject = new BehaviorSubject(false);
@@ -136,6 +136,7 @@ export class AuthService extends RoleValidator {
       await this.afAuth.signOut();
       this.user$ = null;
       await this.limpiarSession();
+      console.log("limpieSession");
     } catch (error) {
       console.log(error);
     }
@@ -163,7 +164,7 @@ export class AuthService extends RoleValidator {
       displayName: user.displayName,
       photoURL: user.photoURL,
       role: 'USER',
-      password: password,
+
     };
     this.registrarBackend(user).subscribe(o => console.log(o));
 
@@ -174,7 +175,7 @@ export class AuthService extends RoleValidator {
   //////////Setter - Getter**************///////////////////////////////////////////////////////
   setToken(token: string) {
     localStorage.setItem('ACCESS_TOKEN', token);
-    this.token = token
+    this.token = token;
     this.token$.next(token);
     console.log('Seteo token');
   }
@@ -210,15 +211,12 @@ export class AuthService extends RoleValidator {
 
     const idToken = firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
       //Send token to your backend via HTTPS
-      console.log(idToken);
       return idToken;
       // ...
     }).catch(function(error) {
       //Handle error
     });
 
-    console.log(user);
-    console.log(`${this.apiURL}signup`);
     return this.HttpClient.post<JwtResponseI>(`${this.apiURL}signup`, { user: user }).pipe(
       retry(2),
       catchError(this.handleError)
@@ -230,7 +228,8 @@ export class AuthService extends RoleValidator {
           //this.setUser(res);
           return res;
         }
-      }))
+      }));
+
   }
 
   /////////////////////****************************************************************////////////////

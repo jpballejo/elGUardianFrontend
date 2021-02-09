@@ -10,14 +10,16 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './components/auth/services/auth.service';
-import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from "./interceptors/header.interceptor";
-
-
+import { AngularResizedEventModule } from 'angular-resize-event';
+import { AuthInterceptor } from './interceptors/auth.interceptor'
+import { UserService } from './services/user.service';
+import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
+import 'firebase/storage';
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [PrincipalModule,
     HttpClientModule,
@@ -28,10 +30,28 @@ import { HeaderInterceptor } from "./interceptors/header.interceptor";
     AngularFireAuthModule,
     AngularFirestoreModule,
     BrowserAnimationsModule,
+    AngularResizedEventModule,
+    AngularFireStorageModule,
   ], exports: [AngularFireModule,
     AngularFireAuthModule,
-    AngularFirestoreModule],
-  providers: [AuthService,  { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },],
+    AngularFirestoreModule,
+  ],
+  providers: [AuthService,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeaderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: BUCKET,
+      useValue: 'gs://elguardian-283604.appspot.com/'
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

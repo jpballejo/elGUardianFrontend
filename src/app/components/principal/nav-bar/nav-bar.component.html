@@ -4,7 +4,7 @@
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <mat-toolbar-row>
-        <span class="titulo" [routerLink]="['/inicio']">elGuardian</span>
+        <span class="titulo" [routerLink]="['/inicio/landing']">elGuardian</span>
         <div *ngIf="user$ | async as user;else login">
           <button mat-button [matMenuTriggerFor]="menu" class="Gmenu">Menu</button>
           <mat-menu #menu="matMenu" yPosition="below">

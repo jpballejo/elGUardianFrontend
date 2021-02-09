@@ -3,74 +3,110 @@
     <mat-card class="mat-elevation-z8">
       <mat-card-content>
         <div class="form-usuario">
-          <table class="example-full-width" cellspacing="0">
-            <tr>
-              <td class="imagentd">
-
-                <div class="imagen-perfil">
-                  <img class="imagen" src="../../../assets/resources/perfil.png" alt="">
-                </div>
-              </td>
-            </tr>
-          </table>
           <form class="" [formGroup]="perfilForm">
+            <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td class="imagentd">
 
+                  <div class="imagen-perfil"  >
+                    <img formControlName="imagenPerfilDiv" id="imagenPerfil"class="imagen" src="../../../assets/resources/perfil.png" alt="">
+                    <app-btn-upload  (propagar2)="procesaPropagar($event)" ></app-btn-upload>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <ng-container >
+              <div *ngIf="editar$ | async;else mostrar">
+                <button mat-mini-fab color="primary" name="editar" (click)="editar()">
+                  <mat-icon matSuffix>mode_edit</mat-icon>
+                </button>
+              </div>
 
+            </ng-container>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Nombre</mat-label>
+              <input type="text" matInput formControlName="nombre">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email" placeholder="Email">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Telefono</mat-label>
+              <span matPrefix>+598 &nbsp;</span>
+              <input type="tel" matInput formControlName="celular" placeholder="+598-99005522">
+              <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+
+            <mat-accordion>
+
+              <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Dirrecion
+                  </mat-panel-title>
+
+                </mat-expansion-panel-header>
+                <p>
                   <mat-form-field class="example-full-width">
-                    <mat-label>Nombre</mat-label>
-                    <input type="text" matInput formControlName="nombre">
+                    <mat-label>Calle</mat-label>
+                    <input matInput formControlName="calle" placeholder="Ej. 18 de Julio">
                   </mat-form-field>
-
-
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Email</mat-label>
-                    <input type="email" matInput formControlName="email" placeholder="Email">
-                  </mat-form-field>
-
+                </p>
 
                 <mat-form-field class="example-full-width">
-                  <mat-label>Telefono</mat-label>
-                  <span matPrefix>+598 &nbsp;</span>
-                  <input type="tel" matInput placeholder="+598-99005522">
-                  <mat-icon matSuffix>mode_edit</mat-icon>
+                  <mat-label>Numero Puerta</mat-label>
+                  <input matInput formControlName="numPuerta" placeholder="Ej. 18 de Julio">
                 </mat-form-field>
 
-            <p>
-              <mat-form-field class="example-full-width">
-                <mat-label>Direccion</mat-label>
-                <textarea matInput placeholder="Ej. 18 de Julio"></textarea>
-              </mat-form-field>
-            </p>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Esquina</mat-label>
+                  <input matInput formControlName="esquina" placeholder="Ej. 18 de Julio">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <mat-label>Apto</mat-label>
+                  <input matInput formControlName="apto" placeholder="Ej. 18 de Julio">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <mat-label>Departamento</mat-label>
+                  <input matInput formControlName="departamento" placeholder="Ej. Paysandu">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <mat-label>Ciudad</mat-label>
+                  <input matInput formControlName="ciudad" placeholder="Ej. Paysandu">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Codigo Postal</mat-label>
+                  <input matInput #postalCode formControlName="codigoPostal" maxlength="5" placeholder="Ex. 60000">
+                  <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                </mat-form-field>
+              </mat-expansion-panel>
+            </mat-accordion>
 
 
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Departamento</mat-label>
-                    <input matInput placeholder="Ex. San Francisco">
-                  </mat-form-field>
 
-
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Ciudad</mat-label>
-                    <input matInput placeholder="Ex. California">
-                  </mat-form-field>
-
-
-
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Codigo Postal</mat-label>
-                    <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
-                    <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-                  </mat-form-field>
 
           </form>
         </div>
       </mat-card-content>
+      <ng-template #mostrar>
+
+          <button mat-button (click)="cancelar()">Cancelar</button>
+          <button mat-button (click)="aceptar()">Aceptar</button>
+
+      </ng-template>
     </mat-card>
+
   </div>
-</div>
 
 
-<!--   uid: string;
+  <!--   uid: string;
   email: string;
   displayName?: string;
   emailVerified: boolean;

@@ -1,0 +1,62 @@
+<h1 mat-dialog-title>Imagen - Subir - Recortar</h1>
+<div mat-dialog-content>
+  <div class="contenedor-principal">
+    <table>
+      <tr>
+        <td>
+          <div class='contenedorImagenBruto'>
+            <mat-card class="cardIMGBruto">
+              <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="4 / 3" [resizeToWidth]="400" [cropperMinWidth]="256" [onlyScaleDown]="true"
+                [roundCropper]="false" [canvasRotation]="canvasRotation" [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+            </mat-card>
+          </div>
+        </td>
+        <td>
+          <div class="contenedorImagenResult">
+            <mat-card class="cardIMGCropp"> <img [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'" /></mat-card>
+          </div>
+        </td>
+        <td>
+          <div class="btnPosicion">
+            <mat-card class="cardBTNPosicion">
+              <button mat-raised-button class="btnP" (click)="rotateLeft()">Rotate left<mat-icon aria-hidden="false">rotate_left</mat-icon></button>
+              <button mat-raised-button class="btnP" (click)="rotateRight()">Rotate right<mat-icon aria-hidden="false">rotate_right</mat-icon></button>
+              <button mat-raised-button class="btnP" (click)="flipHorizontal()">Flip horizontal</button>
+              <button mat-raised-button class="btnP" (click)="flipVertical()">Flip vertical</button>
+            </mat-card>
+          </div>
+        </td>
+      </tr>
+      <tr class="uploadProtationZoom">
+        <td>
+          <div class="btnHead">
+            <mat-card class="btnAcciones">
+              <input hidden #file type="file" accept="image/*" (change)="fileChangeEvent($event)" />
+              <button mat-raised-button (click)="file.click()">
+                <mat-icon aria-hidden="false">image_search</mat-icon>
+              </button>
+              <button mat-raised-button class="btnZoom" (click)="toggleContainWithinAspectRatio()">{{containWithinAspectRatio?'Fill Ratio':'Within Ratio'}}</button>
+              <button mat-raised-button class="btnZoom" (click)="resetImage()">Reset image</button>
+            </mat-card>
+          </div>
+        </td>
+        <td>
+          <div class="div-rotation-zoom">
+            <mat-card>
+              <mat-form-field class="example-margin">
+                <input matInput class="rotacion" [(ngModel)]="rotation" placeholder="Rotation" type="number" (keyup)="updateRotation()">
+              </mat-form-field>
+              <button mat-raised-button class="btnZoom" (click)="zoomOut()">Zoom -</button>
+              <button mat-raised-button class="btnZoom" (click)="zoomIn()">Zoom +</button>
+            </mat-card>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="subir()" cdkFocusInitial>Aceptar</button>
+</div>

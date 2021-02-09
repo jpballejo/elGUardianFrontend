@@ -11,13 +11,15 @@ import { ComentariosComponent } from './comentarios/comentarios.component';
 import { ItemComponent } from './comentarios/item/item.component'
 import { CarouselItemDirective } from './comentarios/carrousel-item.directive';
 import { ServiciosComponent } from "./servicios/servicios.component";
-import {LandingPageComponent} from "./landing-page/landing-page.component";
+import { LandingPageComponent } from "./landing-page/landing-page.component";
+
+import { FormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [PaginaInicioComponent,NavBarComponent,LandingPageComponent,
+  declarations: [PaginaInicioComponent, NavBarComponent, LandingPageComponent,
     CarrucelComponent,
     ServiciosComponent,
     ComentariosComponent,
-    ItemComponent,CarouselItemDirective
+    ItemComponent, CarouselItemDirective
   ],
 
   imports: [
@@ -25,6 +27,7 @@ import {LandingPageComponent} from "./landing-page/landing-page.component";
     PrincipalRoutingModule,
     LayoutModule,
     MaterialModule,
+    FormsModule,
     MatCarouselModule.forRoot(),
   ],
 

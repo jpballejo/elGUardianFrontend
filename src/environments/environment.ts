@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebaseConfig:{
+  firebaseConfig: {
     apiKey: "AIzaSyDPjZkHScEfZCs8CK9i6-Ssty5UFxvmQeM",
     authDomain: "elguardian-283604.firebaseapp.com",
     databaseURL: "https://elguardian-283604.firebaseio.com",
@@ -14,7 +14,29 @@ export const environment = {
     appId: "1:241483415592:web:3be3489ece3e061882f51d",
     measurementId: "G-R83NMJRBD3"
   },
-  apiURL:'http://localhost:3001/',
+  apiURL: 'http://localhost:3001/',
+  departamentos: [
+    { departamento: "Artigas", },
+    { departamento: "Canelones", },
+    { departamento: "Cerro Largo", },
+    { departamento: "Colonia", },
+    { departamento: "Durazno", },
+    { departamento: "Flores", },
+    { departamento: "Florida", },
+    { departamento: "Lavalleja", },
+    { departamento: "Maldonado", },
+    { departamento: "Montevideo", },
+    { departamento: "Paysandú", },
+    { departamento: "Río Negro", },
+    { departamento: "Rivera", },
+    { departamento: "Rocha", },
+    { departamento: "Salto", },
+    { departamento: "San José", },
+    { departamento: "Soriano", },
+    { departamento: "Tacuarembó", },
+    { departamento: "Treinta y Tres", },
+
+  ],
 };
 
 /*

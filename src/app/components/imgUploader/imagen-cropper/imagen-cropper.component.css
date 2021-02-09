@@ -1,0 +1,57 @@
+.contenedor-principal {
+  display: inline;
+}
+
+table, th, td {
+  border: 2px solid black;
+  background-color: black;
+}
+
+.cardIMGBruto {
+  width: 400px;
+  height: 300px;
+}
+
+.cardIMGCropp {
+  width: 400px;
+  height: 300px;
+}
+
+.btnPosicion {
+  width: 160px;
+  height: 100%;
+}
+
+.cardBTNPosicion {
+  margin-bottom: 1px;
+  height: 100%;
+}
+
+.btnP {
+  width: 100%;
+}
+
+.uploadProtationZoom {
+  width: 100%;
+}
+
+.btnHead {
+  width: 100%;
+}
+
+.div-rotation-zoom {
+  width: 100%;
+}
+
+.btnZoom {
+  margin: 10px
+}
+
+.rotacion {
+  margin-left: 10px;
+}
+
+.btnAcciones {
+  margin-left: auto;
+  margin-right: auto;
+}
